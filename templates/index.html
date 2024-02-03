@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mate Web App</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: #1e1e1e;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        header img {
+            width: auto;
+            height: 80px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #db61fb;
+        }
+
+        #data-section {
+            border-top: 2px solid #61dafb;
+            margin-top: 20px;
+        }
+
+        h2 {
+            font-size: 20px;
+            color: #61dafb;
+            margin-bottom: 10px;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="{{ url_for('static', filename='8.png') }}" alt="Mate Logo">
+            <h1>user data</h1>
+        </header>
+      <body>
+      <center>
+      <p>Number of users on mate : {{ count }}</p>
+      </center>
+
+
+        <ul>
+            {% for key, value in data.items() %}
+                <li>{{ key }}: {{ value }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
