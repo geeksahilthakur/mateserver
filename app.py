@@ -18,8 +18,12 @@ def save_data():
 # Get all data
 @app.route('/', methods=['GET'])
 def get_all_data():
-    count = len(data)
+      count = len(data)
+    if request.headers.get('Content-Type') == 'application/json':
+        return jsonify(data), 200
     return render_template('index.html', data=data, count=count)
+    # count = len(data)
+    # return render_template('index.html', data=data, count=count)
 
 # Get data at specific index
 @app.route('/<index>', methods=['GET'])
