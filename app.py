@@ -18,10 +18,14 @@ def save_data():
 # Get all data
 @app.route('/', methods=['GET'])
 def get_all_data():
-      count = len(data)
-      if request.headers.get('Content-Type') == 'application/json':
-            return jsonify(data), 200
-      return render_template('index.html', data=data, count=count)
+    try:
+        return jsonify(data), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 400
+      # count = len(data)
+      # if request.headers.get('Content-Type') == 'application/json':
+      #       return jsonify(data), 200
+      # return render_template('index.html', data=data, count=count)
     # count = len(data)
     # return render_template('index.html', data=data, count=count)
 
