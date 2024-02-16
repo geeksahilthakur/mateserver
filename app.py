@@ -16,7 +16,7 @@ def save_data():
         json.dump(data, file)
 
 # Get all data
-@app.route('/', methods=['GET'])
+@app.route('/all_data', methods=['GET'])
 def get_all_data():
     try:
         return jsonify(data), 200
