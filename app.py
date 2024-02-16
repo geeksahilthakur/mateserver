@@ -15,19 +15,19 @@ def save_data():
     with open('data.json', 'w') as file:
         json.dump(data, file)
 
-# Get all data
-@app.route('/all_data', methods=['GET'])
-def get_all_data():
+# Get all data in JSON format
+@app.route('/all-data', methods=['GET'])
+def get_all_data_json():
     try:
         return jsonify(data), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 400
-      # count = len(data)
-      # if request.headers.get('Content-Type') == 'application/json':
-      #       return jsonify(data), 200
-      # return render_template('index.html', data=data, count=count)
-    # count = len(data)
-    # return render_template('index.html', data=data, count=count)
+
+# Get all data and render HTML template
+@app.route('/', methods=['GET'])
+def get_all_data_html():
+    count = len(data)
+    return render_template('index.html', data=data, count=count)
 
 # Get data at specific index
 @app.route('/<index>', methods=['GET'])
@@ -79,7 +79,6 @@ def delete_item(index):
             return jsonify({"error": "Index not found"}), 404
     except Exception as e:
         return jsonify({"error": str(e)}), 400
-
 if __name__ == '__main__':
     # app.run(debug=True)
     app.run(debug=False, host='0.0.0.0')
