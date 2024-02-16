@@ -19,9 +19,9 @@ def save_data():
 @app.route('/', methods=['GET'])
 def get_all_data():
       count = len(data)
-    if request.headers.get('Content-Type') == 'application/json':
-        return jsonify(data), 200
-    return render_template('index.html', data=data, count=count)
+      if request.headers.get('Content-Type') == 'application/json':
+            return jsonify(data), 200
+      return render_template('index.html', data=data, count=count)
     # count = len(data)
     # return render_template('index.html', data=data, count=count)
 
